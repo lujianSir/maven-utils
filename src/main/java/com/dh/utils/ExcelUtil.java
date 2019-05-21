@@ -68,21 +68,34 @@ public class ExcelUtil {
 				if (row == null || row.getFirstCellNum() == j) {
 					continue;
 				}
+
 				// 遍历所有的列
 				List<Object> li = new ArrayList<Object>();
-				for (int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
-					cell = row.getCell(y);
-					Object ob = getCellValue(cell);
-					li.add(getCellValue(cell));
-					// if (cell == null || cell.equals("")) {
-					// break;
-					// }
-					// li.add(cell);
+
+				if (!isRowEmpty(row)) {
+					for (int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
+						cell = row.getCell(y);
+						Object ob = getCellValue(cell);
+						li.add(getCellValue(cell));
+						// if (cell == null || cell.equals("")) {
+						// break;
+						// }
+						// li.add(cell);
+					}
+					list.add(li);
 				}
-				list.add(li);
 			}
 		}
 		return list;
+	}
+
+	public static boolean isRowEmpty(Row row) {
+		for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
+			Cell cell = row.getCell(c);
+			if (cell != null && cell.getCellType() != Cell.CELL_TYPE_BLANK)
+				return false;
+		}
+		return true;
 	}
 
 	/**
