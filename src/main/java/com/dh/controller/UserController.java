@@ -1,5 +1,6 @@
 package com.dh.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dh.entity.Tree;
+import com.dh.entity.User;
 import com.dh.service.IPermissionService;
 import com.dh.utils.JsonResult;
 
@@ -81,4 +83,22 @@ public class UserController {
 		int num = permissionService.insertPermission(uiId, arrayTrees);
 		return new JsonResult(JsonResult.SUCCESS_CODE, "授权成功", num);
 	}
+	
+	@RequestMapping("/queryListTable")
+	@ResponseBody
+	public List queryListTable() throws Exception {
+		User user1 = new User();
+		user1.setId("1");
+		user1.setUsername("张三");
+		user1.setUserpwd("123456");
+		User user2 = new User();
+		user2.setId("2");
+		user2.setUsername("李四");
+		user2.setUserpwd("123456");
+		List<User> list = new ArrayList<User>();
+		list.add(user1);
+		list.add(user2);
+		return list;
+	}
+	
 }
