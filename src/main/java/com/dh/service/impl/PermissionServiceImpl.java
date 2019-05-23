@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dh.dao.PermissionDao;
+import com.dh.entity.EBook;
 import com.dh.entity.Permission;
 import com.dh.entity.Tree;
 import com.dh.service.IPermissionService;
@@ -43,6 +44,18 @@ public class PermissionServiceImpl implements IPermissionService {
 		}
 
 		return 0;
+	}
+
+	@Override
+	public int getTotal(EBook ebook) {
+		// TODO Auto-generated method stub
+		return permissionDao.getTotal(ebook);
+	}
+
+	@Override
+	public List<EBook> getUserListPage(EBook ebook) {
+		// TODO Auto-generated method stub
+		return permissionDao.getUserListPage(ebook);
 	}
 
 }

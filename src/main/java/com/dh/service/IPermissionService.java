@@ -2,6 +2,7 @@ package com.dh.service;
 
 import java.util.List;
 
+import com.dh.entity.EBook;
 import com.dh.entity.Tree;
 
 public interface IPermissionService {
@@ -20,6 +21,22 @@ public interface IPermissionService {
 	 * @return
 	 */
 	int insertPermission(String uiId, String arrayTrees);
+
+	/**
+	 * 总数
+	 * 
+	 * @param ebook
+	 * @return
+	 */
+	int getTotal(EBook ebook);
+
+	/**
+	 * 分页显示
+	 * 
+	 * @param ebook
+	 * @return
+	 */
+	List<EBook> getUserListPage(EBook ebook);
 }
 
 

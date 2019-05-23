@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dh.entity.EBook;
+import com.dh.entity.PageHelper;
 import com.dh.entity.Tree;
 import com.dh.entity.User;
 import com.dh.service.IPermissionService;
@@ -101,4 +103,20 @@ public class UserController {
 		return list;
 	}
 	
+	@RequestMapping("/getEbookListPage")
+	@ResponseBody
+	public PageHelper<EBook> getUserListPage(EBook ebook, HttpServletRequest request) {
+
+		PageHelper<EBook> pageHelper = new PageHelper<EBook>();
+		// 统计总记录数
+		Integer total = permissionService.getTotal(ebook);
+		pageHelper.setTotal(total);
+
+		// 查询当前页实体对象
+		List<EBook> list = permissionService.getUserListPage(ebook);
+		pageHelper.setRows(list);
+
+		return pageHelper;
+	}
+
 }
