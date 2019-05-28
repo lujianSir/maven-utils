@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dh.dao.IPictureDao;
+import com.dh.dao.PictureDao;
 import com.dh.entity.Picture;
 import com.dh.service.IPictureService;
 
@@ -15,7 +15,7 @@ import com.dh.service.IPictureService;
 public class PictureServiceImpl implements IPictureService {
 
 	@Autowired
-	private IPictureDao pictureDao;
+	private PictureDao pictureDao;
 
 	public List<Picture> queryContentResult(Picture picture) {
 		// TODO Auto-generated method stub

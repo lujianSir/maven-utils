@@ -15,11 +15,12 @@
     </div>
 </body>
 <script type="text/javascript"> 
+
+	var id=getUrlParam("id");
 	var websocaket =null;
 	if('WebSocket' in window){
-		 websocaket = new WebSocket("ws://localhost:8090/maven-utils/WebSocketTest");//用于创建 WebSocket 对象。WebSocketTest对应的是java类的注解值
-		}
-			else {
+		 websocaket = new WebSocket("ws://localhost:8090/maven-utils/WebSocketTest/"+id+"");
+		}else {////用于创建 WebSocket 对象。WebSocketTest对应的是java类的注解值
 			alert("当前浏览器不支持");
 		}
 		//连接发生错误的时候回调方法；
@@ -78,4 +79,10 @@
 	 websocaket.send(message);//给后台发送数据
 	}
 
+	function getUrlParam(name){
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r!=null) return unescape(r[2]); return null;
+	}
+	
 </script>
