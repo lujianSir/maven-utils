@@ -66,6 +66,13 @@ public class WebSocketTest {
 	public void onClose(Session session, @PathParam(value = "param") String param) {
 		thread1.stopMe();
 		webSocketSet.remove(this);
+		List<Session> list = map.get(param);
+		int length = list.size();
+		for (int i = 0; i < length; i++) {
+			if (list.get(i) == session) {
+				list.remove(i);
+			}
+		}
 		System.out.println("关闭连接");
 	}
 
