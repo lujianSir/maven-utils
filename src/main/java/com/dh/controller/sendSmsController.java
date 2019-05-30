@@ -33,6 +33,7 @@ public class sendSmsController {
 			String result = client.send(number, "您的验证码为:" + verifyCode + "，该码有效期为5分钟，该码只能使用一次!");
             json = JSONObject.parseObject(result);
 			System.out.println("------------------" + json.get("data"));
+			// json.put("code", 0);
             if(json.getIntValue("code") != 0)//发送短信失败
                 return "fail";
 
