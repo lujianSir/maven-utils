@@ -52,7 +52,7 @@ public class luceneQuery {
 			System.out.println(doc.get("fileContent"));
 			// System.out.println(doc.getField("filePath"));
 			// System.out.println(doc.getField("fileSize"));
-			list.add(doc.get("fileName"));
+			list.add(doc.get("fileName").substring(0, doc.get("fileName").indexOf(".txt")));
 		}
 		indexReader.close();
 		return list;
